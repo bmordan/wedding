@@ -1,0 +1,37 @@
+<head>
+  <title>Bernard and Siriol</title>
+</head>
+<body>
+  <div>{{> map}}</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-md-offset-2">
+        {{> panel}}
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="panel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Siriol &amp; Bernard</h2>
+    </div>
+    <div class="panel-body">
+      <h3>Are getting Married</h3>
+      <h4>on Saturday 19th September 2015</h4>
+      <h1>2pm</h1>
+    </div>
+    <div class="panel-footer">
+      <address>
+        St Peter's Walworth<br />
+        Liverpool Grove<br />
+        London SE17 2HH
+      </address>
+    </div>
+  </div>  
+</template>
+
+<template name="map">
+  <div id="map"></div>
+</template>
