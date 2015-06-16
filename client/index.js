@@ -11,3 +11,18 @@ Template.map.rendered = function () {
   L.tileLayer('https://{s}.tiles.mapbox.com/v4/'+light+'/{z}/{x}/{y}.png?access_token='+token).addTo(map)
   new L.marker([51.4864606182951, -0.0926971435546875]).addTo(map)
 }
+Template.panel.rendered = function () {
+  var panel = {
+    width: $('.panel').width(),
+    height: $('.panel').height()
+  }
+  $('.flip').css('height', panel.height+'px').css('width', panel.width+'px')
+}
+Template.rsvp.events({
+  'click': function (e) {
+    $('#card').addClass('flipped')
+  }
+})
+Template.form.rendered = function () {
+  $('#form').validate()
+}

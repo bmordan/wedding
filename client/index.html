@@ -13,23 +13,84 @@
 </body>
 
 <template name="panel">
+  <div class="flip">
+    <div id="card">
+      <div class="face front">
+        {{> welcome}}
+      </div>
+      <div class="face back">
+        {{> form}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="welcome">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2>Siriol &amp; Bernard</h2>
+      <h3>Are getting Married</h3>
     </div>
     <div class="panel-body">
-      <h3>Are getting Married</h3>
       <h4>on Saturday 19th September 2015</h4>
       <h1>2pm</h1>
     </div>
+    <address>
+      St Peter's Walworth<br />
+      Liverpool Grove<br />
+      London SE17 2HH
+    </address>
     <div class="panel-footer">
-      <address>
-        St Peter's Walworth<br />
-        Liverpool Grove<br />
-        London SE17 2HH
-      </address>
+      {{> rsvp}}
     </div>
   </div>  
+</template>
+
+<template name="form">
+  <form id="form">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>Siriol &amp; Bernard's Wedding</h2>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label" for="name">Name</label>
+          <input type="text" name="name" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="email">Email</label>
+          <input type="email" class="form-control required" id="email" placeholder="your@email.address" title="You have to add your email for this to work">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="guests">How many people are in your party?</label>
+          <select class="form-control" id="guests">
+            <option selected>0</option>
+            <option selected>1</option>
+            <option selected>2</option>
+            <option selected>3</option>
+            <option selected>4</option>
+            <option selected>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="message">Message</label>
+          <textarea class="form-control" rows="3" id="message" placeholder="send us a message..."></textarea>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="form-group">
+          <button type="reset" class="btn btn-secondary">Cancel</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary">Respond</button>
+        </div>
+      </div>
+    </div> 
+  </form> 
+</template>
+
+<template name="rsvp">
+  <div class="form-group">
+    <button type="button" class="btn btn-primary">R.S.V.P.</button>
+  </div>
 </template>
 
 <template name="map">
