@@ -1,0 +1,1 @@
+Response = new Mongo.Collection('response')

@@ -17,6 +17,7 @@
     <div id="card">
       <div class="face front">
         {{> welcome}}
+        {{> thanks}}
       </div>
       <div class="face back">
         {{> form}}
@@ -26,7 +27,7 @@
 </template>
 
 <template name="welcome">
-  <div class="panel panel-default">
+  <div id="welcome" class="panel panel-default">
     <div class="panel-heading">
       <h2>Siriol &amp; Bernard</h2>
       <h3>Are getting Married</h3>
@@ -44,6 +45,17 @@
       {{> rsvp}}
     </div>
   </div>  
+</template>
+
+<template name="thanks">
+    <div id="thanks" class="panel panel-default" data-guest="-">
+      <div class="panel-heading">
+        <h1 class="addname">Thank you!</h1>
+      </div>
+      <div class="panel-body">
+        <h5>We can't wait to see you on the 19th we'll be in touch closer to the wedding.</h5>
+      </div>
+    </div>
 </template>
 
 <template name="form">
@@ -67,31 +79,31 @@
           <div class="col-xs-3">
             <div class="form-group">
               <label class="checkbox-inline" for="attending"></label>
-              <input type="checkbox" id="attending" value="attending" class="form-control required" title="You have to tell us this"> Can you attend?
+              <input type="checkbox" id="attending" class="form-control required" title="You have to tell us this"> Will you attend?
             </div>
           </div>
           <div class="col-xs-3">
             <div class="form-group attend">
               <label class="checkbox-inline" for="service"></label>
-              <input type="checkbox" id="service" value="service" class="form-control required" > Will you attend the service?
+              <input type="checkbox" id="service" class="form-control required" > Will you attend the service?
             </div>
           </div>
           <div class="col-xs-3">
             <div class="form-group attend">
               <label class="checkbox-inline" for="reception"></label>
-              <input type="checkbox" id="reception" value="reception" class="form-control required"> Will you attend the reception?
+              <input type="checkbox" id="reception" class="form-control required"> Will you attend the reception?
             </div>
           </div>
           <div class="col-xs-3">
             <div class="form-group">
               <label class="control-label" for="guests">How many people are in your party?</label>
-              <select class="form-control" id="guests">
-                <option>0</option>
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <select class="form-control required" id="guests">
+                <option value="0">0</option>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
           </div>
@@ -106,7 +118,7 @@
       <div class="panel-footer">
         <div class="form-group">
           <button type="reset" class="btn btn-secondary">Cancel</button>&nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary">Respond</button>
+          <button type="submit" id="submit" class="btn btn-primary">Respond</button>
         </div>
       </div>
     </div> 

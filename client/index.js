@@ -25,16 +25,35 @@ Template.rsvp.events({
 })
 Template.form.rendered = function () {
   $('#form').validate({
+    rules: {
+      attending: true
+    },
     errorClass: 'has-error',
     highlight: function (el, errorClass) {
       $(el).parent().addClass(errorClass)
+    },
+    submitHandler: function (form) {
+      var formData = {
+        name: $('#name').val(),
+        email: $('#email').val(),
+        attending: $('#attending').is(':checked'),
+        guests: $('#guests').val(),
+        service: $('#service').is(':checked'),
+        reception: $('#reception').is(':checked'),
+        message: $('#message').val()
+      }
+      Meteor.call('rsvp', formData)
+      $('#welcome').hide()
+      $('#thanks').show()
+      $('#thanks .addname').html('<h1>Thank you ' + formData.name.split(' ')[0] + '!</h1>')
+      $('#card').removeClass('flipped')
     }
   })
   $('#attending').on('click', function (evt, tpl) {
-    if ($(this).is(':checked')) {
-      $('.attend').show('slow')
-    }else{
-      $('.attend').hide('slow')
-    }
+    isOn() ? $('.attend').show('slow') : $('.attend').hide('slow')
   })
+}
+
+function isOn () {
+  return $('#attending').is(':checked')
 }
