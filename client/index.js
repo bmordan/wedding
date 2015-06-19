@@ -52,6 +52,9 @@ Template.form.rendered = function () {
   $('#attending').on('click', function (evt, tpl) {
     isOn() ? $('.attend').show('slow') : $('.attend').hide('slow')
   })
+  $('button[type=reset]').on('click', function () {
+    $('#card').removeClass('flipped')
+  })
 }
 
 function isOn () {
