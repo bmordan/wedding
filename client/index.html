@@ -53,28 +53,54 @@
         <h2>Siriol &amp; Bernard's Wedding</h2>
       </div>
       <div class="panel-body">
-        <div class="form-group">
-          <label class="control-label" for="name">Name</label>
-          <input type="text" name="name" id="name" class="form-control">
+        <div class="row">
+          <div class="form-group">
+            <label class="control-label" for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control required" title="You have to tell us your name">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="email" class="form-control required" id="email" placeholder="your@email.address" title="You have to add your email for this to work">
+          </div>
         </div>
-        <div class="form-group">
-          <label class="control-label" for="email">Email</label>
-          <input type="email" class="form-control required" id="email" placeholder="your@email.address" title="You have to add your email for this to work">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="checkbox-inline" for="attending"></label>
+              <input type="checkbox" id="attending" value="attending" class="form-control required" title="You have to tell us this"> Can you attend?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group attend">
+              <label class="checkbox-inline" for="service"></label>
+              <input type="checkbox" id="service" value="service" class="form-control required" > Will you attend the service?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group attend">
+              <label class="checkbox-inline" for="reception"></label>
+              <input type="checkbox" id="reception" value="reception" class="form-control required"> Will you attend the reception?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="control-label" for="guests">How many people are in your party?</label>
+              <select class="form-control" id="guests">
+                <option>0</option>
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="control-label" for="guests">How many people are in your party?</label>
-          <select class="form-control" id="guests">
-            <option selected>0</option>
-            <option selected>1</option>
-            <option selected>2</option>
-            <option selected>3</option>
-            <option selected>4</option>
-            <option selected>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="control-label" for="message">Message</label>
-          <textarea class="form-control" rows="3" id="message" placeholder="send us a message..."></textarea>
+        <div class="row">
+          <div class="form-group">
+            <label class="control-label" for="message">Message</label>
+            <textarea class="form-control" rows="3" id="message" placeholder="send us a message... we will read out your messages if you can1't join us on the actual day"></textarea>
+          </div>
         </div>
       </div>
       <div class="panel-footer">

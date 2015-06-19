@@ -24,5 +24,17 @@ Template.rsvp.events({
   }
 })
 Template.form.rendered = function () {
-  $('#form').validate()
+  $('#form').validate({
+    errorClass: 'has-error',
+    highlight: function (el, errorClass) {
+      $(el).parent().addClass(errorClass)
+    }
+  })
+  $('#attending').on('click', function (evt, tpl) {
+    if ($(this).is(':checked')) {
+      $('.attend').show('slow')
+    }else{
+      $('.attend').hide('slow')
+    }
+  })
 }
