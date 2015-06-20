@@ -1,8 +1,32 @@
 <template name="admin">
-  <h1>Admin</h1>
-  <main>
-    This is the admin template
-  </main>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Attending</td>
+          <td>guests</td>
+          <td>Service</td>
+          <td>Reception</td>
+          <td>Message</td>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each listItem}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+          <td>{{attend}}</td>
+          <td>{{guests}}</td>
+          <td>{{service}}</td>
+          <td>{{reception}}</td>
+          <td>{{trim message}}</td>          
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="public">  
@@ -14,6 +38,7 @@
       </div>
     </div>
   </div>
+  <div>{{> login}}</div>
 </template>
 
 <template name="panel">
@@ -137,4 +162,13 @@
 
 <template name="map">
   <div id="map"></div>
+</template>
+
+<template name="login">
+  <div class="login">
+  {{>loginButtons}}
+  {{#if currentUser}}
+    <a href="/admin">admin</a>
+  {{/if}}
+  </div>
 </template>

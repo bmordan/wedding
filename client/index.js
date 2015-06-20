@@ -46,7 +46,7 @@ Template.form.rendered = function () {
       }
       Meteor.call('rsvp', formData)
       $('#welcome').hide()
-      $('#thanks').show()
+      $('#thanks').show().css('height', $('#welcome').height())
       $('#thanks .addname').html('<h1>Thank you ' + formData.name.split(' ')[0] + '!</h1>')
       $('#card').removeClass('flipped')
     }
@@ -58,7 +58,19 @@ Template.form.rendered = function () {
     $('#card').removeClass('flipped')
   })
 }
-
+Template.login.events({
+  'click': function (evt, tpl) {
+    $('#login').modal('toggle')
+  }
+})
+Template.admin.helpers({
+  listItem: function () {
+    return Responses.find().fetch()
+  },
+  trim: function (str) {
+    return str.slice(0,6) + '...'
+  }
+})
 function isOn () {
   return $('#attending').is(':checked')
 }

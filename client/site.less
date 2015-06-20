@@ -16,6 +16,18 @@
   text-align: center;
   background-color: white;
 }
+.login a{
+  position: fixed;
+  bottom: 6px;
+  right: 146px;
+}
+#login-buttons {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 136px;
+  height: 30px;
+}
 .flip {
   position: relative;
   perspective: 800px;
@@ -46,4 +58,14 @@
 }
 #thanks {
   display: none;
+  .panel-body:before {
+    height: 100%;
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .panel-body h5 {
+    vertical-align: middle;
+    display: inline-block;
+  }
 }
