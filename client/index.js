@@ -1,3 +1,5 @@
+FlowLayout.setRoot('body')
+
 L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images'
 
 Template.map.rendered = function () {

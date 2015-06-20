@@ -1,0 +1,140 @@
+<template name="admin">
+  <h1>Admin</h1>
+  <main>
+    This is the admin template
+  </main>
+</template>
+
+<template name="public">  
+  <div>{{> map}}</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-md-offset-2">
+        {{> panel}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="panel">
+  <div class="flip">
+    <div id="card">
+      <div class="face front">
+        {{> welcome}}
+        {{> thanks}}
+      </div>
+      <div class="face back">
+        {{> form}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="welcome">
+  <div id="welcome" class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Siriol &amp; Bernard</h2>
+      <h3>Are getting Married</h3>
+    </div>
+    <div class="panel-body">
+      <h4>on Saturday 19th September 2015</h4>
+      <h1>2pm</h1>
+    </div>
+    <address>
+      St Peter's Walworth<br />
+      Liverpool Grove<br />
+      London SE17 2HH
+    </address>
+    <div class="panel-footer">
+      {{> rsvp}}
+    </div>
+  </div>  
+</template>
+
+<template name="thanks">
+    <div id="thanks" class="panel panel-default" data-guest="-">
+      <div class="panel-heading">
+        <h1 class="addname">Thank you!</h1>
+      </div>
+      <div class="panel-body">
+        <h5>We can't wait to see you on the 19th we'll be in touch closer to the wedding.</h5>
+      </div>
+    </div>
+</template>
+
+<template name="form">
+  <form id="form">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>Siriol &amp; Bernard's Wedding</h2>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group">
+            <label class="control-label" for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control required" title="You have to tell us your name">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="email" class="form-control required" id="email" placeholder="your@email.address" title="You have to add your email for this to work">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="checkbox-inline" for="attending"></label>
+              <input type="checkbox" id="attending" class="form-control required" title="You have to tell us this"> Will you attend?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group attend">
+              <label class="checkbox-inline" for="service"></label>
+              <input type="checkbox" id="service" class="form-control required" > Will you attend the service?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group attend">
+              <label class="checkbox-inline" for="reception"></label>
+              <input type="checkbox" id="reception" class="form-control required"> Will you attend the reception?
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label class="control-label" for="guests">How many people are in your party?</label>
+              <select class="form-control required" id="guests">
+                <option value="0">0</option>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label class="control-label" for="message">Message</label>
+            <textarea class="form-control" rows="3" id="message" placeholder="send us a message... we will read out your messages if you can1't join us on the actual day"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="form-group">
+          <button type="reset" class="btn btn-secondary">Cancel</button>&nbsp;&nbsp;
+          <button type="submit" id="submit" class="btn btn-primary">Respond</button>
+        </div>
+      </div>
+    </div> 
+  </form> 
+</template>
+
+<template name="rsvp">
+  <div class="form-group">
+    <button type="button" class="btn btn-primary">R.S.V.P.</button>
+  </div>
+</template>
+
+<template name="map">
+  <div id="map"></div>
+</template>

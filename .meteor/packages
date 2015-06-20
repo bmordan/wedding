@@ -9,3 +9,5 @@ bootswatch:paper
 less
 bevanhunt:leaflet
 themeteorchef:jquery-validation
+meteorhacks:flow-router
+meteorhacks:flow-layout
