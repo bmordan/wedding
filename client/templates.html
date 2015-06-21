@@ -1,5 +1,6 @@
 <template name="admin">
   <div class="container">
+    {{#if currentUser}}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -26,6 +27,7 @@
       {{/each}}
       </tbody>
     </table>
+    {{/if}}
   </div>
 </template>
 
