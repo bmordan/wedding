@@ -12,10 +12,10 @@ Template.map.rendered = function () {
   var pin = L.icon({
     iconUrl: 'stPetersPin.png',
     shadowUrl: 'stPetersShadow.png',
-    iconSize: [60, 140],
-    shadowSize: [90, 130],
-    iconAnchor: [20, 150],
-    shadowAnchor: [0, 135]
+    iconSize: [60, 110],
+    shadowSize: [90, 100],
+    iconAnchor: [20, 120],
+    shadowAnchor: [0, 100]
   })
   var map = L.map('map', opts).setView([51.4864606182951, -0.0926971435546875], 14)
   L.tileLayer('https://{s}.tiles.mapbox.com/v4/'+light+'/{z}/{x}/{y}.png?access_token='+token).addTo(map)
@@ -56,10 +56,15 @@ Template.form.rendered = function () {
         reception: $('#reception').is(':checked'),
         message: $('#message').val()
       }
+      Session.set('attending', formData.attending)
+      Session.set('name', formData.name.split(' ')[0])
+      if (formData.message) Session.set('leftMessage', formData.message)
+
       Meteor.call('rsvp', formData)
+
+      window.scrollTo(0, 0)
       $('#welcome').hide()
-      $('#thanks').show().css('height', $('#welcome').height())
-      $('#thanks .addname').html('<h1>Thank you ' + formData.name.split(' ')[0] + '!</h1>')
+      $('#thanks').show()
       $('#card').removeClass('flipped')
     }
   })
@@ -81,6 +86,17 @@ Template.admin.helpers({
   },
   trim: function (str) {
     return str.slice(0,6) + '...'
+  }
+})
+Template.thanks.helpers({
+  isAttending: function () {
+    return Session.get('attending')
+  },
+  leftMessage: function () {
+    return Session.get('leftMessage')
+  },
+  getName: function () {
+    return Session.get('name')
   }
 })
 function isOn () {
