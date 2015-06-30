@@ -5,6 +5,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>&nbsp;</th>
               <th>Name</th>
               <th>Email</th>
               <th>Attending</th>
@@ -15,17 +16,24 @@
             </tr>
           </thead>
           <tbody>
-          {{#each listItem}}
+          {{#if guests}}
+            {{#each guests}}
+              <tr>
+                <td>{{> edit}} {{> removeGuest}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{attending}}</td>
+                <td>{{numGuests}}</td>
+                <td>{{service}}</td>
+                <td>{{reception}}</td>
+                <td>{{trim message}}</td>  
+              </tr>
+            {{/each}}
+          {{else}}
             <tr>
-              <td>{{name}}</td>
-              <td>{{email}}</td>
-              <td>{{attend}}</td>
-              <td>{{guests}}</td>
-              <td>{{service}}</td>
-              <td>{{reception}}</td>
-              <td>{{trim message}}</td>  
+              <td colspan="8">Getting the guests...</td>
             </tr>
-          {{/each}}
+          {{/if}}
           </tbody>
         </table>
       </div>
@@ -193,4 +201,19 @@
 
 <template name="map">
   <div id="map"></div>
+</template>
+
+<template name="edit">
+  <a href="/admin/edit/{{_id}}"><i class="fa fa-edit"></i></a>  
+</template>
+
+<template name="removeGuest">
+  <a href="#"><i class="fa fa-remove" data-id="{{_id}}"></i></a>  
+</template>
+
+<template name="editform">
+  <h1>OK edit page</h1>
+  <input name="name" value="">
+  <h2></h2>
+  <a href="/admin">back</a>
 </template>

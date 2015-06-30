@@ -50,10 +50,10 @@ Template.form.rendered = function () {
       var formData = {
         name: $('#name').val(),
         email: $('#email').val(),
-        attending: $('#attending').is(':checked'),
-        guests: $('#guests').val(),
-        service: $('#service').is(':checked'),
-        reception: $('#reception').is(':checked'),
+        attending: $('#attending').prop('checked'),
+        numGuests: $('#guests').val(),
+        service: $('#service').prop('checked'),
+        reception: $('#reception').prop('checked'),
         message: $('#message').val()
       }
       Session.set('attending', formData.attending)
@@ -76,7 +76,7 @@ Template.form.rendered = function () {
   })
 }
 Template.admin.helpers({
-  listItem: function () {
+  guests: function () {
     return Responses.find().fetch()
   },
   trim: function (str) {
@@ -94,8 +94,20 @@ Template.thanks.helpers({
     return Session.get('name')
   }
 })
+Template.editform.helpers({
+  getResponse: function (id) {
+    return Responses.findOne({_id: id})
+  }
+})
+
+Template.removeGuest.events({
+  'click': function (evt, tpl) {
+    var id = $(evt.target).data('id')
+    Responses.remove({_id: id})
+  }
+})
 function isOn () {
-  return $('#attending').is(':checked')
+  return $('#attending').prop('checked')
 }
 function positionMap (map) {
   var pos = {x: $(window).width(), y: $(window).height()}

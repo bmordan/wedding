@@ -17,7 +17,7 @@ Meteor.startup(function () {
     if (name !== 'bmordan') return Meteor.logout()
     Meteor.publish('responses', function () {
       return Responses.find({}, {sort: {name: 1}})
-    })
+    }) 
   })
 
 })
@@ -26,6 +26,7 @@ Meteor.methods({
   rsvp: function (payload) {
     var guestList = Responses.findOne({email: payload.email})
     if (!guestList) {
+      console.log(payload)
       Responses.insert(payload)
       Meteor.call('send', payload)
       return
