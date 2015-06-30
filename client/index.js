@@ -76,11 +76,27 @@ Template.form.rendered = function () {
   })
 }
 Template.admin.helpers({
+  isReady: function (sub) {
+    if (sub) {
+      return FlowRouter.subsReady(sub)
+    } else {
+      return FlowRouter.subsReady()
+    }
+  },
   guests: function () {
     return Responses.find().fetch()
-  },
+  }
+})
+Template.msg.helpers({
   trim: function (str) {
     return str.slice(0,6) + '...'
+  }
+})
+Template.msg.events({
+  'click': function (e) {
+    var id = $(e.target).data('id')
+    Session.set('guestId', id)
+    $('#guestModal').modal('toggle')
   }
 })
 Template.thanks.helpers({
@@ -94,16 +110,20 @@ Template.thanks.helpers({
     return Session.get('name')
   }
 })
-Template.editform.helpers({
-  getResponse: function (id) {
-    return Responses.findOne({_id: id})
-  }
-})
-
 Template.removeGuest.events({
   'click': function (evt, tpl) {
     var id = $(evt.target).data('id')
     Responses.remove({_id: id})
+  }
+})
+Template.guestModal.helpers({
+  getGuest: function () {
+    var id = Session.get('guestId')
+    if (!id) return $('#guestModal').modal('hide')
+    return Responses.findOne({_id: id}) 
+  },
+  getFirstName: function (fullName) {
+    return _.first(fullName.split(' '))
   }
 })
 function isOn () {

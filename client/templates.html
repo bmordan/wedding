@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <tbody>
-          {{#if guests}}
+          {{#if isReady}}
             {{#each guests}}
               <tr>
                 <td>{{> edit}} {{> removeGuest}}</td>
@@ -26,7 +26,7 @@
                 <td>{{numGuests}}</td>
                 <td>{{service}}</td>
                 <td>{{reception}}</td>
-                <td>{{trim message}}</td>  
+                <td>{{> msg}}</td>  
               </tr>
             {{/each}}
           {{else}}
@@ -38,18 +38,21 @@
         </table>
       </div>
       <div class="row">
-        <div class="login col-sm-offset-9 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
           {{>loginButtons}}
         </div>
       </div>
     {{else}}
       <div class="row">
-        <div class="login col-sm-9 col-sm-offset-3 col-md-4 col-md-offset-4">
-          {{>loginButtons}}
+        <div class="login col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <div class="well">
+            {{>loginButtons}}
+          </div>
         </div>
       </div>
     {{/if}}
   </div>
+  {{> guestModal}}
 </template>
 
 <template name="public">  
@@ -203,6 +206,10 @@
   <div id="map"></div>
 </template>
 
+<template name="msg">
+  <a href="#" class="msg" data-id="{{_id}}">{{trim message}}</a>
+</template>
+
 <template name="edit">
   <a href="/admin/edit/{{_id}}"><i class="fa fa-edit"></i></a>  
 </template>
@@ -211,9 +218,32 @@
   <a href="#"><i class="fa fa-remove" data-id="{{_id}}"></i></a>  
 </template>
 
-<template name="editform">
-  <h1>OK edit page</h1>
-  <input name="name" value="">
-  <h2></h2>
-  <a href="/admin">back</a>
+<template name="guestModal">
+  <div class="modal fade" id="guestModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="fa fa-remove"></span></button>
+          <h4 class="modal-title">{{getGuest.name}}</h4>
+        </div>
+        <div class="modal-body">
+          {{#if getGuest.attending}}
+            <h5>
+              {{getFirstName getGuest.name}} is attending
+              {{#if getGuest.service}}
+                the service  
+              {{/if}}
+              {{#if getGuest.reception}}
+                the reception  
+              {{/if}}
+            </h5>
+          {{/if}}
+          {{getGuest.message}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
