@@ -75,11 +75,6 @@ Template.form.rendered = function () {
     $('#card').removeClass('flipped')
   })
 }
-Template.login.events({
-  'click': function (evt, tpl) {
-    $('#login').modal('toggle')
-  }
-})
 Template.admin.helpers({
   listItem: function () {
     return Responses.find().fetch()
