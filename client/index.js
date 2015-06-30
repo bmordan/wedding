@@ -51,15 +51,23 @@ Template.form.rendered = function () {
         name: $('#name').val(),
         email: $('#email').val(),
         attending: $('#attending').prop('checked'),
-        numGuests: $('#guests').val(),
-        service: $('#service').prop('checked'),
-        reception: $('#reception').prop('checked'),
         message: $('#message').val()
       }
+      console.log('1',formData)
+      if (formData.attending) {
+        formData.numGuests = $('#guests').val(),
+        formData.service = $('#service').prop('checked'),
+        formData.reception = $('#reception').prop('checked')
+      } else {
+        formData.numGuests = 0,
+        formData.service = false,
+        formData.reception = false
+      }
+
       Session.set('attending', formData.attending)
       Session.set('name', formData.name.split(' ')[0])
       if (formData.message) Session.set('leftMessage', formData.message)
-
+      console.log('2',formData)
       Meteor.call('rsvp', formData)
 
       window.scrollTo(0, 0)
@@ -85,6 +93,21 @@ Template.admin.helpers({
   },
   guests: function () {
     return Responses.find().fetch()
+  },
+  getRsvp: function () {
+    return Responses.find({}).count()
+  },
+  getAttending: function () {
+    return Responses.find({attending: true}).count()
+  },
+  getGuests: function () {
+    return getTotal({attending: true})
+  },
+  getService: function () {
+    return getTotal({attending: true, service: true}) 
+  },
+  getReception: function () {
+    return getTotal({attending: true, reception: true}) 
   }
 })
 Template.msg.helpers({
@@ -133,4 +156,10 @@ function positionMap (map) {
   var pos = {x: $(window).width(), y: $(window).height()}
   var xoffset = (pos.x/4)
   map.panBy([-xoffset/2,12])
+}
+function getTotal (query) {
+    var guests = Responses.find(query).fetch()
+    return Object.keys(guests).reduce(function (total, key) {
+      return total += parseInt(guests[key].numGuests)
+    }, 0)  
 }

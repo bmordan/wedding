@@ -1,6 +1,26 @@
 <template name="admin">
   <div class="container">
     {{#if currentUser}}
+      <div class="row totals">
+        <div class="col-sm-2">
+          <i class="fa fa-list"></i>
+        </div>
+        <div class="col-sm-2">
+          RSVPs {{getRsvp}}
+        </div>
+        <div class="col-sm-2">
+          Registered {{getAttending}}
+        </div>
+        <div class="col-sm-2">
+          Guests {{getGuests}}
+        </div>
+        <div class="col-sm-2">
+          Service {{getService}}
+        </div>
+        <div class="col-sm-2">
+          Reception {{getReception}}
+        </div>
+      </div>
       <div class="row">
         <table class="table table-striped">
           <thead>
