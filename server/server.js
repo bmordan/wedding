@@ -50,7 +50,7 @@ function getEmailContent (payload) {
     "template_content" : [
       {
         "name" : "name",
-        "content" : payload.name.split(' ')[0]
+        "content" : payload.name
       }
     ],
     "message" : {
@@ -60,7 +60,10 @@ function getEmailContent (payload) {
   }
 }
 function _getMergeVars (payload) {
-  var mergeVars = []
+  var mergeVars = [{
+    "name" : "name",
+    "content" : payload.name.split(' ')[0]    
+  }]
   if (parseInt(payload.numGuests) === 1) {
     var plural = 'guest'
   } else {
