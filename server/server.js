@@ -61,7 +61,7 @@ function getEmailContent (payload) {
 }
 function _getMergeVars (payload) {
   var mergeVars = []
-  if (parseInt(payload.guests) === 1) {
+  if (parseInt(payload.numGuests) === 1) {
     var plural = 'guest'
   } else {
     var plural = "guest's"
@@ -70,7 +70,7 @@ function _getMergeVars (payload) {
   if (payload.guests > 0) {
     mergeVars.push({
       "name" : "numGuests",
-      "content" : payload.guests
+      "content" : payload.numGuests
     },{
       "name" : "plural",
       "content" : plural

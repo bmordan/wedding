@@ -53,7 +53,7 @@ Template.form.rendered = function () {
         attending: $('#attending').prop('checked'),
         message: $('#message').val()
       }
-      console.log('1',formData)
+
       if (formData.attending) {
         formData.numGuests = $('#guests').val(),
         formData.service = $('#service').prop('checked'),
@@ -67,7 +67,7 @@ Template.form.rendered = function () {
       Session.set('attending', formData.attending)
       Session.set('name', formData.name.split(' ')[0])
       if (formData.message) Session.set('leftMessage', formData.message)
-      console.log('2',formData)
+
       Meteor.call('rsvp', formData)
 
       window.scrollTo(0, 0)
